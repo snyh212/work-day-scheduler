@@ -13,3 +13,7 @@ WHEN I refresh the page
 THEN the saved events persist */
 
 //run on opening, 
+
+
+var today = moment().format("dddd, MMMM Do");
+$("#currentDay").text(today);
