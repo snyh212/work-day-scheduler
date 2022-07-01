@@ -12,8 +12,23 @@ THEN the text for that event is saved in local storage
 WHEN I refresh the page
 THEN the saved events persist */
 
-//run on opening, 
+//run on opening time & date, save button saves text input,
+// checks time hlite now-red, before-grey(Danger, secondary)
 
 
 var today = moment().format("dddd, MMMM Do");
 $("#currentDay").text(today);
+
+
+//adds click listener and save function
+$(function btnClick() {
+    $(".saveBtn").on("click", function () {
+        var input = $(this).siblings(".description").val();
+        var time = $(this).parent().attr("id");
+
+        localStorage.setItem(time, input);
+        console.log()
+    })
+
+    $("#9am .description").val(localStorage.getItem("9am"));
+})
