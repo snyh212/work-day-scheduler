@@ -12,7 +12,7 @@ THEN the text for that event is saved in local storage
 WHEN I refresh the page
 THEN the saved events persist */
 
-//run on opening time & date, save button saves text input,
+//DONE-run on opening time & date, save button saves text input,
 // checks time hlite now-red, before-grey(Danger, secondary)
 
 
