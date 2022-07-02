@@ -14,11 +14,18 @@ THEN the saved events persist */
 
 //DONE-run on opening time & date, save button saves text input,
 // checks time hlite now-red, before-grey(Danger, secondary)
+//need variables for time string/class
 
 
 var today = moment().format("dddd, MMMM Do");
 $("#currentDay").text(today);
 
+var workTime = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"]
+
+for (var i = 0; i < workTime.length; i++) {
+    var listItem = workTime[i];
+    $(".container").append('<li id="timeS" class="row time-block"><section class="col-1 hour">' +time+ '</section><textarea class="col-10 description"></textarea><button class="button saveBtn col-1">Save</button></section></li>')
+}
 
 //adds click listener and save function
 $(function btnClick() {
@@ -30,5 +37,5 @@ $(function btnClick() {
         console.log()
     })
 
-    $("#9am .description").val(localStorage.getItem("9am"));
+    $("#timeS .description").val(localStorage.getItem("timeS"));
 })
