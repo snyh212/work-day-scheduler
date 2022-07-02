@@ -20,15 +20,8 @@ THEN the saved events persist */
 var today = moment().format("dddd, MMMM Do");
 $("#currentDay").text(today);
 
-var workTime = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"]
-
-for (var i = 0; i < workTime.length; i++) {
-    var listItem = workTime[i];
-    $(".container").append('<li id="timeS" class="row time-block"><section class="col-1 hour">' +time+ '</section><textarea class="col-10 description"></textarea><button class="button saveBtn col-1">Save</button></section></li>')
-}
-
 //adds click listener and save function
-$(function btnClick() {
+$(function () {
     $(".saveBtn").on("click", function () {
         var input = $(this).siblings(".description").val();
         var time = $(this).parent().attr("id");
@@ -36,6 +29,44 @@ $(function btnClick() {
         localStorage.setItem(time, input);
         console.log()
     })
+    function timeTracker() {
+        var now = moment().hour();
 
-    $("#timeS .description").val(localStorage.getItem("timeS"));
+        $(".time-block").each(function () {
+            var area = parseInt($(this).attr("id").split("hour")[1]);
+
+            if (area < now) {
+                $(this).addClass("past");
+                $(this).removeClass("present");
+                $(this).removeClass("future");
+                
+                
+            }
+            else if (area === now) {
+                $(this).removeClass("past");
+                $(this).addClass("present");
+                $(this).removeClass("future");
+                
+            }
+            else {
+                $(this).removeClass("past");
+                $(this).removeClass("present");
+                $(this).addClass("future");
+
+            }
+        })
+    }
+    
+    $("#t9 .description").val(localStorage.getItem("t9"));
+    $("#t10 .description").val(localStorage.getItem("t10"));
+    $("#t11 .description").val(localStorage.getItem("t11"));
+    $("#t12 .description").val(localStorage.getItem("t12"));
+    $("#t1 .description").val(localStorage.getItem("t1"));
+    $("#t2 .description").val(localStorage.getItem("t2"));
+    $("#t3 .description").val(localStorage.getItem("t3"));
+    $("#t4 .description").val(localStorage.getItem("t4"));
+    $("#t5 .description").val(localStorage.getItem("t5"));
+    $("#t6 .description").val(localStorage.getItem("t6"));
+
+    timeTracker();
 })
