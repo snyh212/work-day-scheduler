@@ -33,7 +33,7 @@ $(function () {
         var now = moment().hour();
 
         $(".time-block").each(function () {
-            var area = parseInt($(this).attr("id").split("hour")[1]);
+            var area = parseInt($(this).attr("id").split("hour"));
 
             if (area < now) {
                 $(this).addClass("past");
